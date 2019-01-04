@@ -4,7 +4,8 @@ body {
 	margin: 0;
 }
 
-a:not(.slider-control) {
+a:not(.slider-control),
+.link {
 	font-size: .75em;
 	position: relative;
 	display: inline-block;
@@ -30,6 +31,42 @@ a:not(.slider-control) {
 	&:hover:before {
 		right: 0;
 		transform: rotate(0);
+	}
+}
+
+.burger-menu {
+	margin: 0;
+	padding: .5em;
+	cursor: pointer;
+	position: fixed;
+	right: 1em;
+	top: 1.2em;
+	width: 30px;
+	height: 15px;
+
+	> div {
+		width: 30px;
+		height: 3px;
+		background: #000;
+		position: absolute;
+		transition: margin .3s, transform .3s;
+
+		&:nth-child(2) {
+			margin-top: 6px;
+		}
+
+		&:nth-child(3) {
+			margin-top: 12px;
+		}
+	}
+
+	&:hover >  div {
+		background: #00ffff;
+	}
+
+	&:before {
+		background: #000;
+		z-index: -1
 	}
 }
 

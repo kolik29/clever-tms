@@ -26,6 +26,27 @@ $(document).ready(function() {
 	    	})
 	    }
 	});
+
+	let burgerMenuActive = false;
+	$('.burger-menu').on('click', function() {
+		if (!burgerMenuActive) {
+			$('.burger-menu > div').css({'margin': '6px 0'});
+			setTimeout(function() {
+				$('.burger-menu > div').eq(0).css({'transform': 'rotate(45deg)'});
+				$('.burger-menu > div').eq(1).css({'transform': 'rotate(45deg)'});
+				$('.burger-menu > div').eq(2).css({'transform': 'rotate(-45deg)'});
+			}, 150)
+		} else {
+			$('.burger-menu > div').eq(0).css({'transform': 'rotate(0)'});
+			$('.burger-menu > div').eq(1).css({'transform': 'rotate(0)'});
+			$('.burger-menu > div').eq(2).css({'transform': 'rotate(0)'});
+			setTimeout(function() {
+				$('.burger-menu > div').eq(1).css({'margin-top': '0'});
+				$('.burger-menu > div').eq(2).css({'margin-top': '12px'});
+			}, 150);
+		}
+		burgerMenuActive = !burgerMenuActive;
+	});
 });
 
 (function() {
@@ -40,12 +61,20 @@ $(document).ready(function() {
 		rightControl = document.getElementById('slider-control--right');
 
 		leftControl.addEventListener('click', (function() {
-    		$('html, body').animate({scrollTop: 0}, 500);
-    		setTimeout(hexaSlider['flipBack'](), 1000);
+			if (($(window).prop('pageYOffset') != 0)) {
+    			$('html, body').animate({scrollTop: 0}, 300).promise().then(function() {
+    				hexaSlider['flipBack']();
+    			});
+    		} else
+    			hexaSlider['flipBack']();
 		}), false);
 		rightControl.addEventListener('click', (function() {
-    		$('html, body').animate({scrollTop: 0}, 500);
-    		setTimeout(hexaSlider['flip'](), 1000);
+			if (($(window).prop('pageYOffset') != 0)) {
+    			$('html, body').animate({scrollTop: 0}, 300).promise().then(function() {
+    				hexaSlider['flip']();
+    			});
+    		} else
+    			hexaSlider['flip']();
 		}), false);
 
 		document.getElementById('slider-container').addEventListener('mousedown', function(e) {

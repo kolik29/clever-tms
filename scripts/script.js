@@ -1,30 +1,7 @@
 $(document).ready(function() {
+	enableShadow();
 	$(window).on('scroll', function(){
-	    if ($(window).prop('pageYOffset') > 0) {
-	    	$('#main-slider > .shadow').css({
-	    		display: 'block'
-	    	});
-	    	setTimeout(function() {
-	    		$('#main-slider > .shadow').css({
-	    			opacity: 0.5
-	    		});
-	    	}, 1);
-	    	$('.hexaflip-cube.hexaflip-cube-slide').css({
-	    		transform: 'scale(0.95)'
-	    	})
-	    } else {
-	    	$('#main-slider > .shadow').css({
-	    		opacity: 0
-	    	});
-	    	setTimeout(function() {
-	    		$('#main-slider > .shadow').css({
-	    			display: 'none'
-	    		});
-	    	}, 500);
-	    	$('.hexaflip-cube.hexaflip-cube-slide').css({
-	    		transform: 'scale(1)'
-	    	})
-	    }
+		enableShadow();
 	});
 
 	let burgerMenuActive = false;
@@ -35,7 +12,8 @@ $(document).ready(function() {
 				$('.burger-menu > div').eq(0).css({'transform': 'rotate(45deg)'});
 				$('.burger-menu > div').eq(1).css({'transform': 'rotate(45deg)'});
 				$('.burger-menu > div').eq(2).css({'transform': 'rotate(-45deg)'});
-			}, 150)
+			}, 150);
+			$('#overlay-menu').css({'transform': 'translateX(0)'});
 		} else {
 			$('.burger-menu > div').eq(0).css({'transform': 'rotate(0)'});
 			$('.burger-menu > div').eq(1).css({'transform': 'rotate(0)'});
@@ -44,10 +22,39 @@ $(document).ready(function() {
 				$('.burger-menu > div').eq(1).css({'margin-top': '0'});
 				$('.burger-menu > div').eq(2).css({'margin-top': '12px'});
 			}, 150);
+			$('#overlay-menu').css({'transform': 'translateX(-100%)'});
 		}
 		burgerMenuActive = !burgerMenuActive;
 	});
 });
+
+function enableShadow() {
+	if ($(window).prop('pageYOffset') > 0) {
+		$('#main-slider > .shadow').css({
+			display: 'block'
+		});
+		setTimeout(function() {
+			$('#main-slider > .shadow').css({
+				opacity: 0.5
+			});
+		}, 1);
+		$('.hexaflip-cube.hexaflip-cube-slide').css({
+			transform: 'scale(0.95)'
+		})
+	} else {
+		$('#main-slider > .shadow').css({
+			opacity: 0
+		});
+		setTimeout(function() {
+			$('#main-slider > .shadow').css({
+				display: 'none'
+			});
+		}, 500);
+		$('.hexaflip-cube.hexaflip-cube-slide').css({
+			transform: 'scale(1)'
+		})
+	}
+}
 
 (function() {
 	document.addEventListener('DOMContentLoaded', function() {

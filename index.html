@@ -5,9 +5,8 @@
     <meta name="author" content="Dan Motzenbecker">
     <meta name="description" content="HexaFlip - a javascript library that visualizes arrays as cube interfaces.">
     <title>Clever - TLS</title>
-    <link href="styles/hexaflip/hexaflip.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="styles/main.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
     <script src="scripts/script.js"></script>
 </head>
 <body>
@@ -16,6 +15,7 @@
 		<div></div>
 		<div></div>
 	</div>
+	<div id="overlay-menu"></div>
 	<a id="slider-control--left" class="slider-control">
 		<img src="svg/arrow-chevron.svg">
 		<span>left</span>
@@ -28,6 +28,7 @@
 		<section id="slider">
 		    <div id="slider-container"></div>
 		</section>
+    	<link href="styles/hexaflip/hexaflip.css" rel="stylesheet" type="text/css">
 
 		<div class="shadow"></div>
 
@@ -35,12 +36,8 @@
 	</section>
 
 	<section id="content">
-		<section id="slide1">
-			<a href="#" class="link">link</a>
-		</section>
-		<section id="slide2">
-			<a href="#" class="link">link</a>
-		</section>
+		<section id="slide1"></section>
+		<section id="slide2"></section>
 	</section>
 </body>
 </html>

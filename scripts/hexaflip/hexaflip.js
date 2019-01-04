@@ -125,7 +125,7 @@
       this.cubes[setsKeys[setsKeys.length - 1]].el.style.marginRight = '0';
       this.el.classList.add(cssClass);
       this.el.style.height = '100vh';
-      this.el.style.width = '100vw';
+      this.el.style.width = '100%';
       this.el.style[css.perspective] = this.perspective + 'px';
       this.el.appendChild(cubeFragment);
       this.eProp = this.horizontalFlip ? 'pageX' : 'pageY';
@@ -145,7 +145,7 @@
       cube.el.className = cssClass + "-cube " + cssClass + "-cube-" + set;
       cube.el.style.margin = "0 " + this.margin + "px";
       cube.el.style.height = cube.holder.style.height = '100vh';
-      cube.el.style.width = cube.holder.style.width = '100vw';
+      cube.el.style.width = cube.holder.style.width = '100%';
       cube.holder.style[css.transform] = this._getTransform(0);
       sideProto = document.createElement('div');
       sideProto.classList.add(cssClass + '-side');
@@ -169,7 +169,8 @@
               return 'rotateY(90deg)';
           }
         })();
-        cube[side].style[css.transform] = (rotation + " translate3d(0, 0, 50vw)") + (this.horizontalFlip ? 'rotateZ(90deg)' : '');
+        cube[side].style[css.transform] = (rotation + " translate3d(0, 0, calc(50vw - " + scrollbarWidth() + "px))") + (this.horizontalFlip ? 'rotateZ(90deg)' : '');
+        console.log(cube[side].style[css.transform]);
         cube[side].style.fontSize = this.fontSize;
         cube.holder.appendChild(cube[side]);
       }
@@ -179,7 +180,7 @@
     };
 
     HexaFlip.prototype._getTransform = function(deg) {
-      return (this.horizontalFlip ? 'rotateZ(-90deg)' : '') + (" translateZ(-50vw) rotateX(" + deg + "deg)");
+      return (this.horizontalFlip ? 'rotateZ(-90deg)' : '') + (" translateZ(calc(-50vw + " + scrollbarWidth() + "px)) rotateX(" + deg + "deg)");
     };
 
     HexaFlip.prototype._setContent = function(el, content) {
@@ -434,3 +435,15 @@
     }
   };
 }).call(this);
+
+function scrollbarWidth() {
+  var block = $('<div>').css({'height':'50px','width':'50px'}),
+  indicator = $('<div>').css({'height':'200px'});
+
+  $('body').append(block.append(indicator));
+  var w1 = $('div', block).innerWidth();
+  block.css('overflow-y', 'scroll');
+  var w2 = $('div', block).innerWidth();
+  $(block).remove();
+  return (w1 - w2) / 2;
+}

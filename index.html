@@ -6,29 +6,36 @@
     <meta name="description" content="HexaFlip - a javascript library that visualizes arrays as cube interfaces.">
     <title>Clever - TLS</title>
     <link href="styles/hexaflip/hexaflip.css" rel="stylesheet" type="text/css">
-    <link href="styles/hexaflip/hexaStyle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
 <body>
+	<a id="slider-control--left" class="slider-control">
+		<img src="svg/arrow-chevron.svg">
+		<span>left</span>
+	</a>
+	<a id="slider-control--right" class="slider-control">
+		<img src="svg/arrow-chevron.svg">
+		<span>right</span>
+	</a>
 	<section id="main-slider">
-		<a id="slider-control--left" class="slider-control">
-			<img src="svg/arrow-chevron.svg">
-			<span>left</span>
-		</a>
-		<a id="slider-control--right" class="slider-control">
-			<img src="svg/arrow-chevron.svg">
-			<span>right</span>
-		</a>
 		<section id="slider">
 		    <div id="slider-container"></div>
 		</section>
 
+		<div class="shadow"></div>
+
 		<script src="scripts/hexaflip/hexaflip.js"></script>
-		<script src="scripts/hexaflip/hexaScript.js"></script>
 	</section>
 
 	<section id="content">
-		<a href="#" class="link">link</a>
+		<section id="slide1">
+			<a href="#" class="link">link</a>
+		</section>
+		<section id="slide2">
+			<a href="#" class="link">link</a>
+		</section>
 	</section>
 </body>
 </html>

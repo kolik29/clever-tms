@@ -170,7 +170,6 @@
           }
         })();
         cube[side].style[css.transform] = (rotation + " translate3d(0, 0, calc(50vw - " + scrollbarWidth() + "px))") + (this.horizontalFlip ? 'rotateZ(90deg)' : '');
-        console.log(cube[side].style[css.transform]);
         cube[side].style.fontSize = this.fontSize;
         cube.holder.appendChild(cube[side]);
       }

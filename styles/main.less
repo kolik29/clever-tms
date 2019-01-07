@@ -122,20 +122,6 @@ a:not(.slider-control),
 		}
 	}
 
-	&.yellow {
-		> span {
-			background: #000;
-		}
-
-		&:before {
-			background: #e8fa13;
-		}
-
-		&:hover > span {
-			background: #000;
-		}
-	}
-
 	&:hover > span {
 		background: #0ff;
 	}
@@ -161,7 +147,7 @@ a:not(.slider-control),
 #top-menu {
 	position: fixed;
 	top: 0;
-	height: ~'calc(1em + 42px)';
+	height: 58px;
 	background: #000;
 	width: 100%;
 	transition: .35s;
@@ -249,7 +235,6 @@ a:not(.slider-control),
 		flex-direction: column;
 		padding: 0 .5em 0 2em;
 		transition: opacity .3s ease 0s;
-		color: #0ff;
 	}
 
 	&:after {
@@ -275,6 +260,7 @@ a:not(.slider-control),
 #slider-control--left {
 	left: 0;
 	transform: translate(-100%);
+	color: #0ff;
 
 	img {
 		margin-left: 100%;
@@ -298,6 +284,7 @@ a:not(.slider-control),
 #slider-control--right {
 	right: 0;
 	transform: translate(100%);
+	color: #ff0;
 
 	img {
 		margin-left: -30px;
@@ -322,10 +309,11 @@ a:not(.slider-control),
 
 #content {
 	margin-top: 100vh;
+	box-shadow: 0 0 50px 0 rgba(0,0,0,.5);
 
 	 > section {
 		max-width: 100vw;
-		height: 100vh;
+		height: ~'calc(100vh - 58px)';
 	}
 }
 
@@ -363,6 +351,20 @@ a:not(.slider-control),
 	&:hover > h2,
 	&:hover > div {
 		color: #000;
+	}
+
+	&:hover > span {
+		background: #000;
+	}
+}
+
+&.yellow {
+	> span {
+		background: #000;
+	}
+
+	&:before {
+		background: #e8fa13 !important;
 	}
 
 	&:hover > span {

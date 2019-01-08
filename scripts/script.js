@@ -36,6 +36,12 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop: 0}, 300);
 	});
 
+	$('#scrollPage').on('click', function() {
+		$('body,html').animate({
+		    scrollTop: document.documentElement.clientHeight // Scroll to 150px of the top
+		}, 500);
+	});
+
 	hoverOnSliderControl();
 });
 
@@ -223,11 +229,13 @@ function setLinkHead(direction) {
 	$('#slider-control--left').removeClass('hover');
 	$('#slider-control--right').removeClass('hover');
 
-	if (direction == undefined) {
+	if (direction == undefined){
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]);
-	}
-	else
+		$('#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]).addClass('visible');
+		console.log($('#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]));
+	} else {
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex).right[0]);
+	}
 
 	if (direction == 'left') {
 		currentControlIndex--;

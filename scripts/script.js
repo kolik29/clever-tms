@@ -222,6 +222,8 @@ function getButtonValue(arr, index) {
 }
 
 function setLinkHead(direction) {
+	$('#content > section').removeClass('visible');
+
 	$('#slider-control--left').off('mouseenter');
 	$('#slider-control--left').off('mouseleave');
 	$('#slider-control--right').off('mouseenter');
@@ -229,8 +231,10 @@ function setLinkHead(direction) {
 	$('#slider-control--left').removeClass('hover');
 	$('#slider-control--right').removeClass('hover');
 
-	if (direction == undefined)
+	if (direction == undefined) {
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]);
+		$('#' + Object.keys(controlButton)[0]).addClass('visible');
+	}
 	else
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex).right[0]);
 
@@ -243,6 +247,8 @@ function setLinkHead(direction) {
 		if (currentControlIndex > Object.keys(controlButton).length - 1)
 			currentControlIndex = 0;
 	}
+
+	$('#' + Object.keys(controlButton)[currentControlIndex]).addClass('visible');
 
 	setTimeout(function() {
 		$('#slider-control--left').attr('href', '#' + getButtonValue(controlButton, currentControlIndex).left[0]);

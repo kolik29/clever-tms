@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 	$('#scrollPage').on('click', function() {
 		$('body,html').animate({
-		    scrollTop: document.documentElement.clientHeight // Scroll to 150px of the top
+		    scrollTop: document.documentElement.clientHeight
 		}, 500);
 	});
 
@@ -229,13 +229,10 @@ function setLinkHead(direction) {
 	$('#slider-control--left').removeClass('hover');
 	$('#slider-control--right').removeClass('hover');
 
-	if (direction == undefined){
+	if (direction == undefined)
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]);
-		$('#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]).addClass('visible');
-		console.log($('#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]));
-	} else {
+	else
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex).right[0]);
-	}
 
 	if (direction == 'left') {
 		currentControlIndex--;

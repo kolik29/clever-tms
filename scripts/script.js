@@ -136,7 +136,7 @@ var currentControlIndex = 0;
 	document.addEventListener('DOMContentLoaded', function() {
 		var hexaSlider, leftControl, rightControl, mouseXStart, mouseXEnd;
 		hexaSlider = new HexaFlip(document.getElementById('slider-container'), {
-			slide: ['1', '2', '3']
+			slide: ['<div class="slide-picture" style="background: url(\'img/office.jpg\'), linear-gradient(135deg, #0ff 25%, yellow);"><div class="slider-content"><div class="slider-content--background"></div></div></div>', '2', '3']
 		}, {
 			horizontalFlip: true
 		});
@@ -221,6 +221,8 @@ function getButtonValue(arr, index) {
 	}
 }
 
+let siteTitle = document.title;
+
 function setLinkHead(direction) {
 	$('#content > section').removeClass('visible');
 
@@ -234,9 +236,11 @@ function setLinkHead(direction) {
 	if (direction == undefined) {
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex + 1).left[0]);
 		$('#' + Object.keys(controlButton)[0]).addClass('visible');
-	}
-	else
+		document.title = getButtonValue(controlButton, currentControlIndex + 1).left[1] + ' — ' + siteTitle;
+	} else {
 		history.replaceState(null, null, '#' + getButtonValue(controlButton, currentControlIndex).right[0]);
+		document.title = getButtonValue(controlButton, currentControlIndex).right[1] + ' — ' + siteTitle;
+	}
 
 	if (direction == 'left') {
 		currentControlIndex--;

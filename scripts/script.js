@@ -32,7 +32,7 @@ $(document).ready(function() {
 		burgerMenuActive = !burgerMenuActive;
 	});
 
-	$('#top-menu').on('click', function() {
+	$('#top-panel').on('click', function() {
 		$('html, body').animate({scrollTop: 0}, 300);
 	});
 
@@ -77,7 +77,7 @@ function enableShadow() {
 			'transform': 'scale(0.95)'
 		});
 
-		$('#top-menu').css({
+		$('#top-panel').css({
 			'transform': 'translateY(0)'
 		});
 
@@ -104,7 +104,7 @@ function enableShadow() {
 			'transform': 'scale(1)'
 		});
 
-		$('#top-menu').css({
+		$('#top-panel').css({
 			'transform': 'translateY(-100%)'
 		});
 
